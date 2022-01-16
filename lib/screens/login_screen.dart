@@ -1,10 +1,12 @@
-import 'package:fitness_app/design/theme_colors.dart';
-import 'package:fitness_app/providers/authentication_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../design/theme_colors.dart';
+import '../utils/authentication_provider.dart';
+
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
+
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
