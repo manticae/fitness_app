@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 
+import '../screens/settings_screen.dart';
+import '../screens/faq_screen.dart';
+import './screens/admin_screen.dart';
 import './design/app_theme.dart';
 import './screens/home_screen.dart';
-import './providers/authentication_provider.dart';
+import './utils/authentication_provider.dart';
 import './screens/login_screen.dart';
 
 void main() async {
@@ -34,9 +37,16 @@ class FitnessApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Fitness App',
         theme: AppTheme().appTheme,
-        home: const AuthenticationWrapper(),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => const AuthenticationWrapper(),
+          '/admin': (context) => const AdminScreen(),
+          '/FAQ': (context) => const FAQScreen(),
+          '/settings': (context) => const SettingsScreen(),
+        },
       ),
     );
   }
