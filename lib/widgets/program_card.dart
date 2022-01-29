@@ -18,7 +18,7 @@ class ProgramCard extends StatelessWidget {
         Navigator.pushNamed(
           context,
           ProgramScreen.routeName,
-          arguments: {'uid': programData.uid},
+          arguments: programData,
         );
       },
       child: Card(
@@ -53,40 +53,45 @@ class ProgramCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                Expanded(
-                  flex: 1,
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: ShaderMask(
-                          shaderCallback: (rect) {
-                            return LinearGradient(
-                              begin: isInverted
-                                  ? Alignment.centerLeft
-                                  : Alignment.centerRight,
-                              end: isInverted
-                                  ? Alignment.centerRight
-                                  : Alignment.centerLeft,
-                              colors: const [Colors.black, Colors.transparent],
-                            ).createShader(
-                              Rect.fromLTRB(
-                                0,
-                                0,
-                                rect.width,
-                                rect.height,
+                programData.image != null
+                    ? Expanded(
+                        flex: 1,
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: ShaderMask(
+                                shaderCallback: (rect) {
+                                  return LinearGradient(
+                                    begin: isInverted
+                                        ? Alignment.centerLeft
+                                        : Alignment.centerRight,
+                                    end: isInverted
+                                        ? Alignment.centerRight
+                                        : Alignment.centerLeft,
+                                    colors: const [
+                                      Colors.black,
+                                      Colors.transparent
+                                    ],
+                                  ).createShader(
+                                    Rect.fromLTRB(
+                                      0,
+                                      0,
+                                      rect.width,
+                                      rect.height,
+                                    ),
+                                  );
+                                },
+                                blendMode: BlendMode.dstIn,
+                                child: Image.network(
+                                  programData.image!,
+                                  fit: BoxFit.fitHeight,
+                                ),
                               ),
-                            );
-                          },
-                          blendMode: BlendMode.dstIn,
-                          child: Image.network(
-                            programData.image,
-                            fit: BoxFit.fitHeight,
-                          ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                ),
+                      )
+                    : const SizedBox(),
               ],
             ),
           ),
