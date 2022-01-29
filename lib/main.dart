@@ -48,7 +48,7 @@ class FitnessApp extends StatelessWidget {
           AdminScreen.routeName: (context) => const AdminScreen(),
           FAQScreen.routeName: (context) => const FAQScreen(),
           SettingsScreen.routeName: (context) => const SettingsScreen(),
-          ProgramScreen.routeName: (context) => const ProgramScreen(),
+          ProgramScreen.routeName: (context) => ProgramScreen(),
         },
       ),
     );

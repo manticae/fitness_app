@@ -5,7 +5,7 @@ import './theme_colors.dart';
 
 class AppTheme {
   final _primaryColor = ThemeColors.primary;
-  // final _secondaryColor = ThemeColors.secondary;
+  final _secondaryColor = ThemeColors.secondary;
   final _primaryFont = GoogleFonts.merriweatherSans();
   // final _primaryFont = GoogleFonts.rubikBeastly();
 
@@ -25,6 +25,14 @@ class AppTheme {
         bodyText1: _primaryFont,
         bodyText2: _primaryFont,
         subtitle1: _primaryFont,
+      ),
+      listTileTheme: ListTileThemeData(
+        textColor: Colors.white,
+        tileColor: _secondaryColor,
+        iconColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
+        ),
       ),
       inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(
@@ -56,6 +64,9 @@ class AppTheme {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.0),
         ),
+      ),
+      appBarTheme: const AppBarTheme(
+        foregroundColor: Colors.white,
       ),
     );
   }
