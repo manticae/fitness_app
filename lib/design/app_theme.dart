@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import './theme_colors.dart';
 
 class AppTheme {
@@ -7,6 +8,10 @@ class AppTheme {
   // final _secondaryColor = ThemeColors.secondary;
   final _primaryFont = GoogleFonts.merriweatherSans();
   // final _primaryFont = GoogleFonts.rubikBeastly();
+
+  // final _secondaryFont = GoogleFonts.merriweatherSans(
+  //   color: ThemeColors.secondary,
+  // );
 
   ThemeData get appTheme {
     return ThemeData(
@@ -16,7 +21,10 @@ class AppTheme {
         headline1: _primaryFont,
         headline4: _primaryFont,
         headline6: _primaryFont,
+        headline5: _primaryFont,
         bodyText1: _primaryFont,
+        bodyText2: _primaryFont,
+        subtitle1: _primaryFont,
       ),
       inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(

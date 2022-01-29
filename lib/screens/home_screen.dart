@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../screens/contact_screen.dart';
 import '../screens/diet_screen.dart';
-import '../screens/program_screen.dart';
+import 'program_feed_screen.dart';
 import '../widgets/app_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,10 +15,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _screens = <Widget>[
-    ProgramScreen(),
-    DietScreen(),
-    ContactScreen(),
+  final List<Widget> _screens = <Widget>[
+    ProgramFeedScreen(),
+    const DietScreen(),
+    const ContactScreen(),
   ];
 
   void _onItemTapped(int index) {

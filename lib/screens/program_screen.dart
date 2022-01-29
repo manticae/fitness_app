@@ -3,10 +3,16 @@ import 'package:flutter/material.dart';
 class ProgramScreen extends StatelessWidget {
   const ProgramScreen({Key? key}) : super(key: key);
 
+  static const routeName = "/program";
+
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Program sida"),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Program',
+        ),
+      ),
     );
   }
 }
