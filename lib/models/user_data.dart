@@ -1,6 +1,8 @@
+import 'role.dart';
+
 class UserData {
   final String uid;
-  final String role;
+  final Role role;
   final String email;
   final String firstName;
   final String lastName;

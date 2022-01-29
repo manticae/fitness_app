@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 
+import '../screens/program_screen.dart';
 import '../screens/settings_screen.dart';
 import '../screens/faq_screen.dart';
 import './screens/admin_screen.dart';
@@ -40,12 +41,14 @@ class FitnessApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Fitness App',
         theme: AppTheme().appTheme,
-        initialRoute: '/',
+        initialRoute: AuthenticationWrapper.routeName,
         routes: {
-          '/': (context) => const AuthenticationWrapper(),
-          '/admin': (context) => const AdminScreen(),
-          '/FAQ': (context) => const FAQScreen(),
-          '/settings': (context) => const SettingsScreen(),
+          AuthenticationWrapper.routeName: (context) =>
+              const AuthenticationWrapper(),
+          AdminScreen.routeName: (context) => const AdminScreen(),
+          FAQScreen.routeName: (context) => const FAQScreen(),
+          SettingsScreen.routeName: (context) => const SettingsScreen(),
+          ProgramScreen.routeName: (context) => const ProgramScreen(),
         },
       ),
     );
@@ -54,6 +57,8 @@ class FitnessApp extends StatelessWidget {
 
 class AuthenticationWrapper extends StatelessWidget {
   const AuthenticationWrapper({Key? key}) : super(key: key);
+
+  static const routeName = '/';
 
   @override
   Widget build(BuildContext context) {

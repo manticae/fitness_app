@@ -1,11 +1,13 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitness_app/models/user_data.dart';
-import 'package:fitness_app/utils/storage_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-// import 'package:firebase_storage/firebase_storage.dart';
 
+import '../models/role.dart';
+import '../screens/settings_screen.dart';
+import '../screens/faq_screen.dart';
+import '../screens/admin_screen.dart';
+import '../utils/storage_provider.dart';
+import '../models/user_data.dart';
 import '../utils/authentication_provider.dart';
 import '../design/theme_colors.dart';
 
@@ -42,8 +44,8 @@ class _AppdrawerState extends State<Appdrawer> {
           }
 
           if (snapshot.connectionState == ConnectionState.done) {
-            UserData? data = snapshot.data;
-            return data != null
+            UserData? userData = snapshot.data;
+            return userData != null
                 ? Column(
                     children: [
                       DrawerHeader(
@@ -63,21 +65,24 @@ class _AppdrawerState extends State<Appdrawer> {
                                   width: 8.0,
                                 ),
                                 Text(
-                                  '${data.firstName} ${data.lastName}',
-                                  style: Theme.of(context).textTheme.headline6,
+                                  '${userData.firstName} ${userData.lastName}',
+                                  style: Theme.of(context).textTheme.headline5,
                                 ),
                               ],
                             ),
                             Text(
-                              data.email,
+                              userData.email,
                             ),
                           ],
                         ),
                       ),
-                      data.role == 'admin'
+                      userData.role == Role.admin
                           ? TextButton(
                               onPressed: () {
-                                Navigator.pushNamed(context, '/admin');
+                                Navigator.pushNamed(
+                                  context,
+                                  AdminScreen.routeName,
+                                );
                               },
                               child: Row(
                                 children: const [
@@ -98,7 +103,10 @@ class _AppdrawerState extends State<Appdrawer> {
                           : const SizedBox(),
                       TextButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/FAQ');
+                          Navigator.pushNamed(
+                            context,
+                            FAQScreen.routeName,
+                          );
                         },
                         child: Row(
                           children: const [
@@ -118,7 +126,10 @@ class _AppdrawerState extends State<Appdrawer> {
                       ),
                       TextButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/settings');
+                          Navigator.pushNamed(
+                            context,
+                            SettingsScreen.routeName,
+                          );
                         },
                         child: Row(
                           children: const [
