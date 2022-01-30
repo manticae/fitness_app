@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 
-import '../screens/program_screen.dart';
-import '../screens/settings_screen.dart';
-import '../screens/faq_screen.dart';
+import './screens/traning_session_screen.dart';
+import './screens/program_screen.dart';
+import './screens/settings_screen.dart';
+import './screens/faq_screen.dart';
 import './screens/admin_screen.dart';
 import './design/app_theme.dart';
 import './screens/home_screen.dart';
@@ -49,6 +50,7 @@ class FitnessApp extends StatelessWidget {
           FAQScreen.routeName: (context) => const FAQScreen(),
           SettingsScreen.routeName: (context) => const SettingsScreen(),
           ProgramScreen.routeName: (context) => ProgramScreen(),
+          TraningSessionScreen.routeName: (context) => TraningSessionScreen(),
         },
       ),
     );
