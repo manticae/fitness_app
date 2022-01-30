@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
+import '../utils/programs_provider.dart';
 import '../models/exercise.dart';
 import '../models/program_content.dart';
-import '../utils/storage_provider.dart';
 
 class TraningSessionScreen extends StatelessWidget {
   TraningSessionScreen({Key? key}) : super(key: key);
   static const routeName = "/traningSession";
-  final StorageProvider _storageProvider = StorageProvider();
+  final ProgramsProvider _programsProvider = ProgramsProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class TraningSessionScreen extends StatelessWidget {
         title: Text(programContent.title),
       ),
       body: FutureBuilder(
-        future: _storageProvider.getExercisesForProgramContent(
+        future: _programsProvider.getExercisesForProgramContent(
             programContentId: programContent.uid),
         builder:
             (BuildContext context, AsyncSnapshot<List<Exercise>> snapshot) {

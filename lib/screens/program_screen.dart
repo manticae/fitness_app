@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/program_content_list_tile.dart';
-import '../utils/storage_provider.dart';
+import '../utils/programs_provider.dart';
 import '../models/program_data.dart';
 import '../models/program_content.dart';
 
 class ProgramScreen extends StatelessWidget {
   ProgramScreen({Key? key}) : super(key: key);
-  final StorageProvider _storageProvider = StorageProvider();
+  final ProgramsProvider _programsProvider = ProgramsProvider();
+
   static const routeName = "/program";
 
   @override
@@ -32,7 +33,7 @@ class ProgramScreen extends StatelessWidget {
               ),
             ),
             FutureBuilder(
-              future: _storageProvider.getProgramContent(
+              future: _programsProvider.getProgramContent(
                   programId: programData.uid),
               builder: (BuildContext context,
                   AsyncSnapshot<List<ProgramContent>> snapshot) {
