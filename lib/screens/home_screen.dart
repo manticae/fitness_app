@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../screens/contact_screen.dart';
-import '../screens/diet_screen.dart';
+import 'diet_plans_feed_screen.dart';
 import 'program_feed_screen.dart';
 import '../widgets/app_drawer.dart';
 
@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Widget> _screens = <Widget>[
     ProgramFeedScreen(),
-    const DietScreen(),
+    DietPlansFeedScreen(),
     const ContactScreen(),
   ];
 

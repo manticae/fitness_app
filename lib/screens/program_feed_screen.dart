@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../utils/programs_provider.dart';
 import '../widgets/program_list_tile.dart';
 import '../widgets/program_card.dart';
 import '../models/program_data.dart';
-import '../utils/storage_provider.dart';
 
 class ProgramFeedScreen extends StatelessWidget {
   ProgramFeedScreen({Key? key}) : super(key: key);
 
-  final StorageProvider _storageProvider = StorageProvider();
+  final ProgramsProvider _programsProvider = ProgramsProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class ProgramFeedScreen extends StatelessWidget {
           SizedBox(
             height: 150.0,
             child: FutureBuilder(
-              future: _storageProvider.getUserPrograms(
+              future: _programsProvider.getUserPrograms(
                 userId: firebaseUser!.uid,
               ),
               builder: (BuildContext context,
@@ -86,7 +86,7 @@ class ProgramFeedScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 8.0, right: 8.0),
             child: FutureBuilder(
-              future: _storageProvider.getPublicPrograms(),
+              future: _programsProvider.getPublicPrograms(),
               builder: (BuildContext context,
                   AsyncSnapshot<List<ProgramData>> snapshot) {
                 if (snapshot.hasError) {

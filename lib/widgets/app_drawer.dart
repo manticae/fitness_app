@@ -19,7 +19,7 @@ class Appdrawer extends StatefulWidget {
 }
 
 class _AppdrawerState extends State<Appdrawer> {
-  final StorageProvider _storageProvider = StorageProvider();
+  final UserProvider _storageProvider = UserProvider();
 
   @override
   Widget build(BuildContext context) {
