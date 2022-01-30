@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../screens/diet_plan_screen.dart';
 import '../models/diet_plan_data.dart';
 
 class DietPlanCard extends StatelessWidget {
@@ -9,8 +10,8 @@ class DietPlanCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // ignore: avoid_print
-        print("TODO: Navigation");
+        Navigator.pushNamed(context, DietPlanScreen.routeName,
+            arguments: dietPlanData);
       },
       child: Card(
         clipBehavior: Clip.antiAlias,
