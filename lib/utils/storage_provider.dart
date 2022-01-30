@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../models/program_content.dart';
+import '../models/exercise.dart';
 import '../models/role.dart';
 import '../models/program_data.dart';
 import '../models/user_data.dart';
@@ -55,6 +56,34 @@ class StorageProvider {
       );
     }
     return programs;
+  }
+
+  Future<List<Exercise>> getExercisesForProgramContent({
+    required String programContentId,
+  }) async {
+    QuerySnapshot<Map<String, dynamic>> querySnapshot = await FirebaseFirestore
+        .instance
+        .collection('exercises')
+        .where('programContent', isEqualTo: programContentId)
+        .get();
+
+    List<QueryDocumentSnapshot<Map<String, dynamic>>> exercisesSnapshot =
+        querySnapshot.docs;
+
+    List<Exercise> exercises = [];
+    for (var exercise in exercisesSnapshot) {
+      exercises.add(
+        Exercise(
+          title: exercise.data()['title'],
+          uid: exercise.id,
+          index: exercise.data()['index'],
+          programContentId: exercise.data()['programContent'],
+        ),
+      );
+    }
+    // Sort based on index
+    exercises.sort((a, b) => a.index.compareTo(b.index));
+    return exercises;
   }
 
   Future<List<ProgramContent>> getProgramContent({
